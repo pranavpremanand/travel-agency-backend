@@ -7,7 +7,7 @@ import route from "./routes/route.js";
 dotenv.config();
 const app = express();
 // app.use(cors({ origin: "http://localhost:3000" }));
-app.use(cors({ origin: "https://travelandtourismagency.netlify.app/" }));
+app.use(cors({ origin: "*" }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 mongoose

@@ -24,6 +24,7 @@ export const changeBanner = async (req, res) => {
       res.status(201).json(true);
     }
   } catch (err) {
+    console.log('Error',err)
     res.status(500).json(err);
   }
 };
