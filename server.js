@@ -10,8 +10,6 @@ const app = express();
 app.use(cors({ origin: "https://travelandtourismagency.netlify.app/" }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use("/", route);
-
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => {
@@ -19,5 +17,5 @@ mongoose
     app.listen(5000, () => console.log(`Server is running on port:${5000}`));
   })
   .catch(() => console.log("Database connection failed"));
-
+app.use("/", route);
 export default app;
