@@ -11,11 +11,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/", route);
 
-app.listen(5000, () => console.log(`Server is running on port:${5000}`));
 mongoose.connect(process.env.MONGO_URL);
 const connection = mongoose.connection;
 connection
-  .on("connected", () => console.log("Database connected successfully"))
+  .on("connected", () => {
+    console.log("Database connected successfully");
+    app.listen(5000, () => console.log(`Server is running on port:${5000}`));
+  })
   .on("error", () => console.log("Database connection failed"));
 
 export default app;
